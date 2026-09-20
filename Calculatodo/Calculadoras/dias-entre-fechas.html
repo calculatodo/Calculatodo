@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de días entre fechas | CalculaTodo</title>
+
+    <meta name="description"
+          content="Calcula cuántos días hay entre dos fechas. También puedes conocer las semanas, meses y años aproximados entre dos fechas.">
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="container">
+
+        <a href="../index.html" class="logo">
+            CalculaTodo
+        </a>
+
+        <nav>
+            <a href="../index.html">Inicio</a>
+            <a href="../index.html#categorias">Categorías</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+<section class="calculator-page">
+
+    <div class="container">
+
+
+        <div class="calculator-intro">
+
+            <h1>Calculadora de días entre fechas</h1>
+
+            <p>
+                Averigua exactamente cuántos días hay entre
+                dos fechas.
+            </p>
+
+        </div>
+
+
+
+        <div class="calculator-box">
+
+            <h2>Introduce las fechas</h2>
+
+
+            <div class="form-group">
+
+                <label for="fechaInicio">
+                    Fecha inicial
+                </label>
+
+                <input
+                    type="date"
+                    id="fechaInicio"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="fechaFinal">
+                    Fecha final
+                </label>
+
+                <input
+                    type="date"
+                    id="fechaFinal"
+                >
+
+            </div>
+
+
+            <button onclick="calcularDias()">
+                Calcular
+            </button>
+
+
+            <div id="resultadoDias"
+                 class="resultado"
+                 style="display:none;">
+            </div>
+
+        </div>
+
+
+
+        <div class="calculator-info">
+
+            <h2>¿Cómo se calculan los días entre dos fechas?</h2>
+
+            <p>
+                Para calcular la diferencia entre dos fechas,
+                se determina el número de días transcurridos
+                entre la fecha inicial y la fecha final.
+            </p>
+
+
+            <h2>¿Qué muestra la calculadora?</h2>
+
+            <p>
+                El resultado muestra el número total de días,
+                semanas, meses aproximados y años aproximados
+                entre las dos fechas.
+            </p>
+
+
+            <p>
+                El número de días es el resultado exacto.
+                Los meses y años se muestran como equivalencias
+                aproximadas.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 CalculaTodo
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+function calcularDias() {
+
+    const inicioInput =
+        document.getElementById("fechaInicio");
+
+    const finalInput =
+        document.getElementById("fechaFinal");
+
+    const resultado =
+        document.getElementById("resultadoDias");
+
+
+    if (
+        !inicioInput.value ||
+        !finalInput.value
+    ) {
+
+        resultado.style.display = "block";
+
+        resultado.innerHTML =
+            "⚠️ Selecciona las dos fechas.";
+
+        return;
+
+    }
+
+
+    const inicio =
+        new Date(
+            inicioInput.value + "T00:00:00"
+        );
+
+    const final =
+        new Date(
+            finalInput.value + "T00:00:00"
+        );
+
+
+    if (final < inicio) {
+
+        resultado.style.display = "block";
+
+        resultado.innerHTML =
+            "⚠️ La fecha final debe ser posterior a la fecha inicial.";
+
+        return;
+
+    }
+
+
+    const diferencia =
+        final - inicio;
+
+
+    const milisegundosDia =
+        1000 * 60 * 60 * 24;
+
+
+    const dias =
+        Math.round(
+            diferencia / milisegundosDia
+        );
+
+
+    const semanas =
+        dias / 7;
+
+
+    const meses =
+        dias / 30.4375;
+
+
+    const años =
+        dias / 365.2425;
+
+
+    resultado.style.display = "block";
+
+
+    resultado.innerHTML = `
+
+        <strong>Resultado</strong>
+
+        <div class="edad-grande">
+
+            ${formatearNumero(dias)}
+            ${dias === 1 ? "día" : "días"}
+
+        </div>
+
+        <hr>
+
+        <strong>Equivalencias aproximadas:</strong>
+
+        <br><br>
+
+        ${formatearNumero(semanas)}
+        semanas
+
+        <br>
+
+        ${formatearNumero(meses)}
+        meses
+
+        <br>
+
+        ${formatearNumero(años)}
+        años
+
+    `;
+
+}
+
+
+function formatearNumero(numero) {
+
+    return numero.toLocaleString(
+        "es-ES",
+        {
+            maximumFractionDigits: 2
+        }
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>

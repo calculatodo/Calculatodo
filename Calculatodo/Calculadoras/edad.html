@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de edad exacta | CalculaTodo</title>
+
+    <meta name="description"
+          content="Calculadora de edad exacta online. Introduce tu fecha de nacimiento y calcula tus años, meses, días y cuándo será tu próximo cumpleaños.">
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="container">
+
+        <a href="../index.html" class="logo">
+            CalculaTodo
+        </a>
+
+        <nav>
+            <a href="../index.html">Inicio</a>
+            <a href="../index.html#categorias">Categorías</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+<section class="calculator-page">
+
+    <div class="container">
+
+
+        <div class="calculator-intro">
+
+            <h1>Calculadora de edad</h1>
+
+            <p>
+                Calcula tu edad exacta en años, meses y días
+                a partir de tu fecha de nacimiento.
+            </p>
+
+        </div>
+
+
+
+        <div class="calculator-box">
+
+            <h2>Introduce tu fecha de nacimiento</h2>
+
+
+            <div class="form-group">
+
+                <label for="fechaNacimiento">
+                    Fecha de nacimiento
+                </label>
+
+                <input
+                    type="date"
+                    id="fechaNacimiento"
+                >
+
+            </div>
+
+
+            <button onclick="calcularEdad()">
+                Calcular edad
+            </button>
+
+
+            <div id="resultadoEdad"
+                 class="resultado"
+                 style="display:none;">
+            </div>
+
+        </div>
+
+
+
+        <div class="calculator-info">
+
+            <h2>¿Cómo se calcula la edad?</h2>
+
+            <p>
+                La edad se calcula comparando la fecha de nacimiento
+                con la fecha actual. El resultado tiene en cuenta
+                el día, el mes y el año para determinar la edad
+                exacta.
+            </p>
+
+
+            <h2>¿Qué puedes calcular?</h2>
+
+            <p>
+                Esta calculadora muestra los años completos que has
+                cumplido, junto con los meses y días transcurridos
+                desde tu último cumpleaños.
+            </p>
+
+
+            <p>
+                También muestra la fecha de tu próximo cumpleaños
+                y cuántos días faltan para que llegue.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 CalculaTodo
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+function calcularEdad() {
+
+    const input =
+        document.getElementById("fechaNacimiento");
+
+    const resultado =
+        document.getElementById("resultadoEdad");
+
+
+    if (!input.value) {
+
+        resultado.style.display = "block";
+
+        resultado.innerHTML =
+            "⚠️ Selecciona tu fecha de nacimiento.";
+
+        return;
+
+    }
+
+
+    const nacimiento =
+        new Date(input.value + "T00:00:00");
+
+    const hoy =
+        new Date();
+
+
+    nacimiento.setHours(0, 0, 0, 0);
+    hoy.setHours(0, 0, 0, 0);
+
+
+    if (nacimiento > hoy) {
+
+        resultado.style.display = "block";
+
+        resultado.innerHTML =
+            "⚠️ La fecha de nacimiento no puede ser futura.";
+
+        return;
+
+    }
+
+
+    let años =
+        hoy.getFullYear() -
+        nacimiento.getFullYear();
+
+    let meses =
+        hoy.getMonth() -
+        nacimiento.getMonth();
+
+    let dias =
+        hoy.getDate() -
+        nacimiento.getDate();
+
+
+    if (dias < 0) {
+
+        meses--;
+
+        const diasMesAnterior =
+            new Date(
+                hoy.getFullYear(),
+                hoy.getMonth(),
+                0
+            ).getDate();
+
+        dias += diasMesAnterior;
+
+    }
+
+
+    if (meses < 0) {
+
+        años--;
+
+        meses += 12;
+
+    }
+
+
+    /* PRÓXIMO CUMPLEAÑOS */
+
+    let proximoCumple =
+        new Date(
+            hoy.getFullYear(),
+            nacimiento.getMonth(),
+            nacimiento.getDate()
+        );
+
+
+    if (proximoCumple < hoy) {
+
+        proximoCumple =
+            new Date(
+                hoy.getFullYear() + 1,
+                nacimiento.getMonth(),
+                nacimiento.getDate()
+            );
+
+    }
+
+
+    /*
+       Caso especial para personas nacidas
+       el 29 de febrero.
+    */
+
+    if (
+        nacimiento.getDate() === 29 &&
+        nacimiento.getMonth() === 1 &&
+        !esBisiesto(proximoCumple.getFullYear())
+    ) {
+
+        proximoCumple =
+            new Date(
+                proximoCumple.getFullYear(),
+                1,
+                28
+            );
+
+    }
+
+
+    const diferencia =
+        proximoCumple - hoy;
+
+
+    const diasFaltan =
+        Math.ceil(
+            diferencia /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const fechaProximo =
+        proximoCumple.toLocaleDateString(
+            "es-ES",
+            {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            }
+        );
+
+
+    resultado.style.display = "block";
+
+
+    resultado.innerHTML = `
+
+        <strong>Tienes:</strong>
+
+        <div class="edad-grande">
+            ${años} años,
+            ${meses} meses y
+            ${dias} días
+        </div>
+
+        <hr>
+
+        <strong>Próximo cumpleaños:</strong>
+
+        <br>
+
+        ${fechaProximo}
+
+        <br><br>
+
+        <strong>
+            Faltan ${diasFaltan} días
+        </strong>
+
+    `;
+
+}
+
+
+function esBisiesto(año) {
+
+    return (
+        año % 4 === 0 &&
+        (
+            año % 100 !== 0 ||
+            año % 400 === 0
+        )
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>

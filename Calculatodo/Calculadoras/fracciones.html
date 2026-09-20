@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de fracciones online | CalculaTodo</title>
+
+    <meta name="description"
+          content="Calculadora de fracciones online gratuita. Suma, resta, multiplica, divide y simplifica fracciones fácilmente.">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="container">
+
+        <a href="../index.html" class="logo">
+            CalculaTodo
+        </a>
+
+        <nav>
+            <a href="../index.html#categorias">Categorías</a>
+            <a href="../index.html#calculadoras">Calculadoras</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+<section class="calculator-page">
+
+    <div class="container">
+
+
+        <div class="calculator-intro">
+
+            <h1>Calculadora de fracciones</h1>
+
+            <p>
+                Calcula y simplifica fracciones fácilmente.
+                Suma, resta, multiplica o divide dos fracciones
+                y obtén el resultado en forma de fracción y decimal.
+            </p>
+
+        </div>
+
+
+
+        <div class="calculator-box">
+
+            <h2>Operaciones con fracciones</h2>
+
+
+            <div class="form-group">
+
+                <label for="numerador1">
+                    Primera fracción
+                </label>
+
+                <div class="fraccion-input">
+
+                    <input
+                        type="number"
+                        id="numerador1"
+                        placeholder="Numerador"
+                    >
+
+                    <span>/</span>
+
+                    <input
+                        type="number"
+                        id="denominador1"
+                        placeholder="Denominador"
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="operacion">
+                    Operación
+                </label>
+
+                <select id="operacion">
+
+                    <option value="suma">
+                        Sumar (+)
+                    </option>
+
+                    <option value="resta">
+                        Restar (-)
+                    </option>
+
+                    <option value="multiplicacion">
+                        Multiplicar (×)
+                    </option>
+
+                    <option value="division">
+                        Dividir (÷)
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="numerador2">
+                    Segunda fracción
+                </label>
+
+                <div class="fraccion-input">
+
+                    <input
+                        type="number"
+                        id="numerador2"
+                        placeholder="Numerador"
+                    >
+
+                    <span>/</span>
+
+                    <input
+                        type="number"
+                        id="denominador2"
+                        placeholder="Denominador"
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <button onclick="calcularFraccion()">
+                Calcular
+            </button>
+
+
+            <div id="resultado"
+                 class="resultado"
+                 style="display: none;">
+            </div>
+
+
+        </div>
+
+
+
+        <div class="calculator-info">
+
+            <h2>¿Cómo calcular fracciones?</h2>
+
+            <p>
+                Las fracciones representan una cantidad dividida
+                en partes iguales. Una fracción está formada por
+                un numerador y un denominador.
+            </p>
+
+
+            <h2>Suma y resta de fracciones</h2>
+
+            <p>
+                Para sumar o restar fracciones con distinto
+                denominador, primero hay que obtener un
+                denominador común. Después se realizan las
+                operaciones correspondientes con los numeradores.
+            </p>
+
+
+            <div class="formula">
+
+                a/b + c/d =
+                (a × d + c × b) / (b × d)
+
+            </div>
+
+
+            <h2>Multiplicación de fracciones</h2>
+
+            <p>
+                Para multiplicar dos fracciones se multiplican
+                los numeradores entre sí y los denominadores
+                entre sí.
+            </p>
+
+
+            <div class="formula">
+
+                a/b × c/d =
+                (a × c) / (b × d)
+
+            </div>
+
+
+            <h2>División de fracciones</h2>
+
+            <p>
+                Para dividir dos fracciones se multiplica la
+                primera fracción por la inversa de la segunda.
+            </p>
+
+
+            <div class="formula">
+
+                a/b ÷ c/d =
+                (a × d) / (b × c)
+
+            </div>
+
+
+            <h2>Simplificación de fracciones</h2>
+
+            <p>
+                El resultado se simplifica automáticamente
+                dividiendo el numerador y el denominador entre
+                su máximo común divisor.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 CalculaTodo
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<script src="fracciones.js"></script>
+
+</body>
+
+</html>

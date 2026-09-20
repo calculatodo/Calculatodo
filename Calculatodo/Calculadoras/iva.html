@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de IVA online | CalculaTodo</title>
+
+    <meta name="description"
+          content="Calculadora de IVA online gratuita. Añade o quita IVA y calcula la base imponible, el IVA y el precio final.">
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+
+<header class="header">
+
+    <div class="container">
+
+        <a href="../index.html" class="logo">
+            CalculaTodo
+        </a>
+
+        <nav>
+            <a href="../index.html">Inicio</a>
+            <a href="../index.html#categorias">Categorías</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+<section class="calculator-page">
+
+    <div class="container">
+
+
+        <div class="calculator-intro">
+
+            <h1>Calculadora de IVA</h1>
+
+            <p>
+                Calcula fácilmente el IVA, la base imponible
+                y el precio final de un producto o servicio.
+            </p>
+
+        </div>
+
+
+
+        <!-- AÑADIR IVA -->
+
+        <div class="calculator-box">
+
+            <h2>Añadir IVA</h2>
+
+            <div class="form-group">
+
+                <label for="precioAñadir">
+                    Precio sin IVA
+                </label>
+
+                <input
+                    type="number"
+                    id="precioAñadir"
+                    placeholder="Ejemplo: 100"
+                    step="0.01"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="tipoAñadir">
+                    Tipo de IVA
+                </label>
+
+                <select id="tipoAñadir">
+
+                    <option value="21">
+                        21% - General
+                    </option>
+
+                    <option value="10">
+                        10% - Reducido
+                    </option>
+
+                    <option value="4">
+                        4% - Superreducido
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button onclick="añadirIVA()">
+                Calcular
+            </button>
+
+
+            <div id="resultadoAñadir"
+                 class="resultado"
+                 style="display:none;">
+            </div>
+
+        </div>
+
+
+
+        <!-- QUITAR IVA -->
+
+        <div class="calculator-box">
+
+            <h2>Quitar IVA</h2>
+
+            <div class="form-group">
+
+                <label for="precioQuitar">
+                    Precio con IVA
+                </label>
+
+                <input
+                    type="number"
+                    id="precioQuitar"
+                    placeholder="Ejemplo: 121"
+                    step="0.01"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="tipoQuitar">
+                    Tipo de IVA
+                </label>
+
+                <select id="tipoQuitar">
+
+                    <option value="21">
+                        21% - General
+                    </option>
+
+                    <option value="10">
+                        10% - Reducido
+                    </option>
+
+                    <option value="4">
+                        4% - Superreducido
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button onclick="quitarIVA()">
+                Calcular
+            </button>
+
+
+            <div id="resultadoQuitar"
+                 class="resultado"
+                 style="display:none;">
+            </div>
+
+        </div>
+
+
+
+        <!-- IVA PERSONALIZADO -->
+
+        <div class="calculator-box">
+
+            <h2>Calcular con otro porcentaje</h2>
+
+            <div class="form-group">
+
+                <label for="precioPersonalizado">
+                    Precio sin IVA
+                </label>
+
+                <input
+                    type="number"
+                    id="precioPersonalizado"
+                    placeholder="Ejemplo: 100"
+                    step="0.01"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="tipoPersonalizado">
+                    Porcentaje de IVA
+                </label>
+
+                <input
+                    type="number"
+                    id="tipoPersonalizado"
+                    placeholder="Ejemplo: 21"
+                    step="0.01"
+                >
+
+            </div>
+
+
+            <button onclick="ivaPersonalizado()">
+                Calcular
+            </button>
+
+
+            <div id="resultadoPersonalizado"
+                 class="resultado"
+                 style="display:none;">
+            </div>
+
+        </div>
+
+
+
+        <!-- INFORMACIÓN -->
+
+        <div class="calculator-info">
+
+            <h2>¿Qué es el IVA?</h2>
+
+            <p>
+                El IVA, o Impuesto sobre el Valor Añadido,
+                es un impuesto indirecto que grava el consumo
+                de determinados bienes y servicios.
+            </p>
+
+
+            <h2>¿Cómo se calcula el IVA?</h2>
+
+            <p>
+                Para añadir IVA a un precio sin impuestos,
+                se calcula primero el importe correspondiente
+                al porcentaje de IVA y después se suma al precio.
+            </p>
+
+
+            <div class="formula">
+
+                IVA = Precio sin IVA × (IVA ÷ 100)
+
+            </div>
+
+
+            <div class="formula">
+
+                Precio final = Precio sin IVA + IVA
+
+            </div>
+
+
+            <h2>Ejemplo</h2>
+
+            <p>
+                Si un producto cuesta 100 € sin IVA y aplicamos
+                un IVA del 21%:
+            </p>
+
+
+            <div class="formula">
+
+                100 × 21 ÷ 100 = 21 €
+
+            </div>
+
+
+            <p>
+                El IVA sería de 21 € y el precio final sería
+                de 121 €.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 CalculaTodo
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="../js/calculadoras/iva.js"></script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de IMC | CalculaTodo</title>
+
+    <meta name="description"
+          content="Calculadora de IMC online. Introduce tu peso y altura para calcular tu índice de masa corporal de forma sencilla.">
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="container">
+
+        <a href="../index.html" class="logo">
+            CalculaTodo
+        </a>
+
+        <nav>
+            <a href="../index.html">Inicio</a>
+            <a href="../index.html#categorias">Categorías</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+<section class="calculator-page">
+
+    <div class="container">
+
+
+        <div class="calculator-intro">
+
+            <h1>Calculadora de IMC</h1>
+
+            <p>
+                Calcula tu índice de masa corporal a partir
+                de tu peso y altura.
+            </p>
+
+        </div>
+
+
+
+        <div class="calculator-box">
+
+            <h2>Introduce tus datos</h2>
+
+
+            <div class="form-group">
+
+                <label for="peso">
+                    Peso (kg)
+                </label>
+
+                <input
+                    type="number"
+                    id="peso"
+                    placeholder="Ejemplo: 70"
+                    min="1"
+                    step="0.1"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="altura">
+                    Altura (cm)
+                </label>
+
+                <input
+                    type="number"
+                    id="altura"
+                    placeholder="Ejemplo: 175"
+                    min="50"
+                    step="0.1"
+                >
+
+            </div>
+
+
+            <button onclick="calcularIMC()">
+                Calcular IMC
+            </button>
+
+
+            <div id="resultadoIMC"
+                 class="resultado"
+                 style="display:none;">
+            </div>
+
+        </div>
+
+
+
+        <div class="calculator-info">
+
+            <h2>¿Qué es el IMC?</h2>
+
+            <p>
+                El índice de masa corporal (IMC) es un cálculo
+                que relaciona el peso de una persona con su altura.
+            </p>
+
+
+            <h2>Fórmula</h2>
+
+            <div class="formula">
+
+                IMC = peso (kg) ÷ altura² (m)
+
+            </div>
+
+
+            <h2>Importante</h2>
+
+            <p>
+                El IMC es una medida orientativa y no tiene en cuenta
+                factores como la masa muscular, distribución de grasa,
+                edad u otras características individuales. No debe
+                utilizarse por sí solo para realizar un diagnóstico
+                médico.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 CalculaTodo
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<script src="../js/calculadoras/imc.js"></script>
+
+
+</body>
+
+</html>

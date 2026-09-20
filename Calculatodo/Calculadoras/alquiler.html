@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de alquiler | CalculaTodo</title>
+
+    <meta name="description"
+          content="Calculadora de alquiler online gratuita. Calcula el coste mensual, anual y total de tu alquiler incluyendo gastos y suministros.">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="container">
+
+        <a href="../index.html" class="logo">
+            CalculaTodo
+        </a>
+
+        <nav>
+            <a href="../index.html#categorias">Categorías</a>
+            <a href="../index.html#calculadoras">Calculadoras</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+<section class="calculator-page">
+
+    <div class="container">
+
+
+        <div class="calculator-intro">
+
+            <h1>Calculadora de alquiler</h1>
+
+            <p>
+                Calcula cuánto te cuesta realmente un alquiler
+                al mes, al año y durante el periodo que quieras.
+                Incluye gastos adicionales y suministros.
+            </p>
+
+        </div>
+
+
+
+        <div class="calculator-box">
+
+            <h2>Calcula el coste de tu alquiler</h2>
+
+
+            <div class="form-group">
+
+                <label for="alquiler">
+                    Precio mensual del alquiler (€)
+                </label>
+
+                <input
+                    type="number"
+                    id="alquiler"
+                    placeholder="Ejemplo: 800"
+                    min="0"
+                    step="0.01"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="gastos">
+                    Gastos mensuales adicionales (€)
+                </label>
+
+                <input
+                    type="number"
+                    id="gastos"
+                    placeholder="Ejemplo: 50"
+                    min="0"
+                    step="0.01"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="suministros">
+                    Suministros mensuales (€)
+                </label>
+
+                <input
+                    type="number"
+                    id="suministros"
+                    placeholder="Ejemplo: 120"
+                    min="0"
+                    step="0.01"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="meses">
+                    Duración del alquiler (meses)
+                </label>
+
+                <input
+                    type="number"
+                    id="meses"
+                    placeholder="Ejemplo: 12"
+                    min="1"
+                    step="1"
+                >
+
+            </div>
+
+
+            <button onclick="calcularAlquiler()">
+                Calcular
+            </button>
+
+
+            <div id="resultado"
+                 class="resultado"
+                 style="display: none;">
+            </div>
+
+
+        </div>
+
+
+
+        <div class="calculator-info">
+
+            <h2>¿Cómo calcular el coste de un alquiler?</h2>
+
+            <p>
+                El precio anunciado de una vivienda no siempre
+                representa el coste real mensual. Para conocer
+                cuánto vas a gastar, puedes sumar al alquiler
+                los gastos adicionales y los suministros.
+            </p>
+
+
+            <h2>Coste mensual total</h2>
+
+            <p>
+                El coste mensual total se obtiene sumando el
+                precio del alquiler, los gastos adicionales y
+                los suministros.
+            </p>
+
+
+            <div class="formula">
+
+                Coste mensual =
+                Alquiler + Gastos + Suministros
+
+            </div>
+
+
+            <h2>Coste anual del alquiler</h2>
+
+            <p>
+                Para calcular el coste anual, se multiplica el
+                coste mensual total por 12 meses.
+            </p>
+
+
+            <div class="formula">
+
+                Coste anual =
+                Coste mensual × 12
+
+            </div>
+
+
+            <h2>Coste total del alquiler</h2>
+
+            <p>
+                Si quieres conocer cuánto gastarás durante un
+                periodo determinado, multiplica el coste mensual
+                por el número de meses del alquiler.
+            </p>
+
+
+            <div class="formula">
+
+                Coste total =
+                Coste mensual × Número de meses
+
+            </div>
+
+
+            <h2>Ejemplo</h2>
+
+            <p>
+                Si pagas 800 € de alquiler, 50 € de gastos
+                adicionales y 120 € de suministros, tu coste
+                mensual total sería de 970 €. En un año,
+                el coste sería de 11.640 €.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        <p>
+            © 2026 CalculaTodo
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="alquiler.js"></script>
+
+</body>
+
+</html>
